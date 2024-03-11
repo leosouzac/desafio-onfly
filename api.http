@@ -1,0 +1,46 @@
+POST http://localhost:3333/user
+Content-Type: application/json
+
+{
+    "name": "teste",
+      "email": "teste2@teste.com",
+      "password": "teste"
+}
+
+###
+POST http://localhost:3333/sessions
+Content-Type: application/json
+
+{
+    "email": "teste2@teste.com",
+    "password": "teste"
+}
+###
+
+POST http://localhost:3333/expenses
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTAxMTgzNzMsImV4cCI6MTcxMDIwNDc3Mywic3ViIjoiNzBhN2RmYmEtZGNlOS00ZGM3LWJmZDctMTI5YTUyNTAzNjRmIn0.KTbifTWnciZV-hQQxDdpS-y2q8pNKro5X-wkhpScgfc
+
+{
+    "amount": 1000,
+    "description": "teste",
+    "date": "2024-01-25"
+}
+
+###
+DELETE  http://localhost:3333/expenses/16410b47-ab04-490e-a296-2e4dbe9cc0f5
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTAxMTg0NzMsImV4cCI6MTcxMDIwNDg3Mywic3ViIjoiMjg4ZTQ4MTgtZmMyYy00ZTUzLWJiZjItMDM3ZjE4NmM3NGZmIn0.WzT1gLc7aZRKUIFST9Vk8jLSM3i65XI0AFYRiN3yrlQ
+
+###
+PUT http://localhost:3333/expenses
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTAxMTg2MDMsImV4cCI6MTcxMDIwNTAwMywic3ViIjoiNzBhN2RmYmEtZGNlOS00ZGM3LWJmZDctMTI5YTUyNTAzNjRmIn0.MLKiiHwOzW_hdPO2L43EJeXPBN-nID3CGF6rE7JEIfU
+
+{
+    "amount": 2000,
+    "id": "d0e30e35-61e9-47c5-b7be-0496216e318e"
+}
+
+
+

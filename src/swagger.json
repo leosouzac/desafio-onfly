@@ -1,0 +1,223 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Onfly expenses API Documentation",
+    "description": "This is an API Documentation",
+    "version": "1.0.0",
+    "contact": {
+      "email": "leosouza.coelho13@gmail.com"
+    }
+  },
+  "paths": {
+    "/users": {
+      "post": {
+        "sumary": "Create new users.",
+        "description": "Verify users, if email dont exists, create new user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "permissions_group": {
+                    "type": "object"
+                  }
+                },
+                "example": {
+                  "name": "user name sample",
+                  "email": "user email sample",
+                  "permissions_group": "user permissions_group sample"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The user was sucessfuly created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsersObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sessions": {
+      "post": {
+        "sumary": "Create new user session.",
+        "description": "Verify users, if email exists, create user session",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "email": "user email sample",
+                  "password": "user password sample"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The user was sucessfuly authenticated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/expenses": {
+      "post": {
+        "security":{
+          "Bearer": []
+        },
+        "sumary": "Create new expense.",
+        "description": "Create new expense",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "amount": {
+                    "type": "number"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "date": {
+                    "type": "Date"
+                  }
+                },
+                "example": {
+                  "amount": "expense amount sample",
+                  "description": "expense description sample",
+                  "date": "expense date sample"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The user was sucessfuly created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsersObject"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "sumary": "Get all expense by user.",
+        "description": "Create new expense",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "amount": {
+                    "type": "number"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "date": {
+                    "type": "Date"
+                  }
+                },
+                "example": {
+                  "amount": "expense amount sample",
+                  "description": "expense description sample",
+                  "date": "expense date sample"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The user was sucessfuly created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsersObject"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "UsersObject": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "active": {
+              "type": "boolean"
+            },
+            "first_access": {
+              "type": "boolean"
+            },
+            "permissions_group": {
+              "type": "object"
+            }
+          }
+        },
+        "SessionObject": {
+          "type": "object",
+          "properties": {
+            "user": {
+              "type": "object"
+            },
+            "permission": {
+              "type": "array"
+            },
+            "token": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
