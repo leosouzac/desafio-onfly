@@ -44,7 +44,18 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UsersObject"
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "email": {
+                        "type": "string"
+                      }
+                    }
                 }
               }
             }
@@ -83,7 +94,17 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SessionObject"
+                  "SessionObject": {
+                    "type": "object",
+                    "properties": {
+                      "user": {
+                        "type": "object"
+                      },
+                      "token": {
+                        "type": "string"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -93,9 +114,15 @@
     },
     "/expenses": {
       "post": {
-        "security":{
-          "Bearer": []
-        },
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "sumary": "Create new expense.",
         "description": "Create new expense",
         "requestBody": {
@@ -129,7 +156,32 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UsersObject"
+                  "ExpenseObject": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "amount": {
+                        "type": "number"
+                      },
+                      "user_id": {
+                        "type": "string"
+                      },
+                      "date": {
+                        "type": "Date"
+                      },
+                      "created_at": {
+                        "type": "Date"
+                      },
+                      "updated_at": {
+                        "type": "Date"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -138,7 +190,66 @@
       },
       "get": {
         "sumary": "Get all expense by user.",
-        "description": "Create new expense",
+        "description": "Get expenses",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Expenses has been listed.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "ExpenseObject": {
+                    "type": "array",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "amount": {
+                        "type": "number"
+                      },
+                      "user_id": {
+                        "type": "string"
+                      },
+                      "date": {
+                        "type": "Date"
+                      },
+                      "created_at": {
+                        "type": "Date"
+                      },
+                      "updated_at": {
+                        "type": "Date"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "sumary": "Update an exist expense.",
+        "description": "CUpdate an exist expense",
         "requestBody": {
           "content": {
             "application/json": {
@@ -170,54 +281,66 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UsersObject"
+                  "ExpenseObject": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "amount": {
+                        "type": "number"
+                      },
+                      "user_id": {
+                        "type": "string"
+                      },
+                      "date": {
+                        "type": "Date"
+                      },
+                      "created_at": {
+                        "type": "Date"
+                      },
+                      "updated_at": {
+                        "type": "Date"
+                      }
+                    }
+                  }
                 }
               }
             }
           }
         }
-      }
-    },
-    "components": {
-      "schemas": {
-        "UsersObject": {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string"
-            },
-            "name": {
-              "type": "string"
-            },
-            "email": {
-              "type": "string"
-            },
-            "active": {
-              "type": "boolean"
-            },
-            "first_access": {
-              "type": "boolean"
-            },
-            "permissions_group": {
-              "type": "object"
-            }
+      },
+      "delete": {
+        "sumary": "Delete a expense by user.",
+        "description": "Delete expense by id from user",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "JWT access token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "description": "Expense id to delete",
+            "required": true,
+            "type": "string"
           }
-        },
-        "SessionObject": {
-          "type": "object",
-          "properties": {
-            "user": {
-              "type": "object"
-            },
-            "permission": {
-              "type": "array"
-            },
-            "token": {
-              "type": "string"
-            }
+        ],
+
+        "responses": {
+          "201": {
+            "description": "Expenses has been listed."
           }
         }
       }
     }
+
   }
+
 }

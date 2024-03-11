@@ -2,6 +2,7 @@
  * For a detailed explanation regarding each configuration property and type check, visit:
  * https://jestjs.io/docs/en/configuration.html
  */
+import 'reflect-metadata'
 
 require('dotenv').config()
 
@@ -59,9 +60,11 @@ export default {
 
   // Force coverage collection from ignored files using an array of glob patterns
   // forceCoverageMatch: [],
-
   // A path to a module which exports an async function that is triggered once before all test suites
-  globalSetup: '<rootDir>/src/config/__test__/setup-db.ts',
+  setupFiles: [
+    '<rootDir>/src/config/__test__/metadata.ts',
+    '<rootDir>/src/config/__test__/setup-db.ts',
+  ],
 
   // A path to a module which exports an async function that is triggered once after all test suites
   // globalTeardown: undefined,
@@ -202,5 +205,3 @@ export default {
   // Whether to use watchman for file crawling
   // watchman: true,
 }
-
-

@@ -10,7 +10,8 @@ export class ListExpensesByUserService {
   ) {}
 
   async execute(user_id: string): Promise<Expense[]> {
-    const foundAllExpensesByUser = await this.expenseRepository.findByUserId(user_id)
+    const foundAllExpensesByUser =
+      await this.expenseRepository.findByUserId(user_id)
 
     return foundAllExpensesByUser
   }

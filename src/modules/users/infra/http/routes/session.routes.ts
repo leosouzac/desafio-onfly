@@ -1,10 +1,10 @@
-import { Router } from 'express';
-import { CreateNewSessionController } from '../controllers/session/CreateNewSessionController';
+import { Router } from 'express'
+import { CreateNewSessionController } from '../controllers/session/CreateNewSessionController'
 
-const sessionRouter = Router();
+const sessionRouter = Router()
 
-const createNewSessionController = new CreateNewSessionController();
+const createNewSessionController = new CreateNewSessionController()
 
-sessionRouter.post('/', createNewSessionController.handle);
+sessionRouter.post('/', createNewSessionController.handle)
 
-export default sessionRouter;
+export default sessionRouter

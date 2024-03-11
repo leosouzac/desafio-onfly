@@ -1,4 +1,4 @@
-import {  ICreateExpenseDTO } from '../../../dto/ICreateExpenseDTO'
+import { ICreateExpenseDTO } from '../../../dto/ICreateExpenseDTO'
 import { IExpenseRepository } from '../../../repositories/IExpenseRepository'
 import { Expense } from '../entities/Expense'
 import { Repository } from 'typeorm'
@@ -10,6 +10,7 @@ export class ExpenseRepository implements IExpenseRepository {
   constructor() {
     this.ormRepository = AppDataSource.getRepository(Expense)
   }
+
   async findByUserId(user_id: string): Promise<Expense[]> {
     return this.ormRepository.find({ where: { user_id } })
   }

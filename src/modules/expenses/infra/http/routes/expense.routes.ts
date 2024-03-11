@@ -3,7 +3,7 @@ import { CreateExpenseController } from '../controllers/CreateExpenseController'
 import { DeleteExpenseController } from '../controllers/DeleteExpenseController'
 import { ListExpensesByUserController } from '../controllers/ListExpensesByUserController'
 import { UpdateExpenseController } from '../controllers/UpdateExpenseController'
-import ensureAuthenticated from '@shared/infra/middlewares/ensureAuthenticated'
+import ensureAuthenticated from '../../../../../shared/infra/middlewares/ensureAuthenticated'
 
 const expenseRouter = Router()
 

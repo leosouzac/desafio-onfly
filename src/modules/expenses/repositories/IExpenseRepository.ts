@@ -1,5 +1,5 @@
 import { ICreateExpenseDTO } from '../dto/ICreateExpenseDTO'
-import {  Expense } from '../infra/typeorm/entities/Expense'
+import { Expense } from '../infra/typeorm/entities/Expense'
 
 export interface IExpenseRepository {
   create(expense: ICreateExpenseDTO): Promise<Expense>

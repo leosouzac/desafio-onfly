@@ -1,7 +1,7 @@
-import { DataSource } from 'typeorm';
-import { config } from 'dotenv';
+import { DataSource } from 'typeorm'
+import { config } from 'dotenv'
 
-config();
+config()
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
@@ -14,11 +14,11 @@ export const AppDataSource = new DataSource({
   synchronize: false,
   // ssl: true,
   entities:
-    process.env.NODE_ENV === 'dev'
-      ? ['src/modules/**/infra/typeorm/entities/*.ts']
-      : ['dist/modules/**/infra/typeorm/entities/*.js'],
+    process.env.NODE_ENV === 'prod'
+      ? ['dist/modules/**/infra/typeorm/entities/*.js']
+      : ['src/modules/**/infra/typeorm/entities/*.ts'],
   migrations:
     process.env.NODE_ENV === 'dev'
-      ? ['src/shared/infra/typeorm/migrations/*.ts']
-      : ['dist/shared/infra/typeorm/migrations/*.js'],
-});
+      ? ['dist/shared/infra/typeorm/migrations/*.js']
+      : ['src/shared/infra/typeorm/migrations/*.ts'],
+})

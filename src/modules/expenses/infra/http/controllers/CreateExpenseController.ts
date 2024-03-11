@@ -8,15 +8,13 @@ export class CreateExpenseController {
 
     const user_id = request.user.id
 
-    console.log(user_id)
-    
     const createExpenseService = container.resolve(CreateExpenseService)
 
     const newExpense = await createExpenseService.execute({
       amount,
       description,
       date,
-      user_id
+      user_id,
     })
 
     return response.status(201).json(newExpense)

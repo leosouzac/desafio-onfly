@@ -6,7 +6,9 @@ export class ListExpensesByUserController {
   async handle(request: Request, response: Response): Promise<Response> {
     const user_id = request.user.id
 
-    const listExpensesByUserService = container.resolve(ListExpensesByUserService)
+    const listExpensesByUserService = container.resolve(
+      ListExpensesByUserService,
+    )
 
     const allExpenses = await listExpensesByUserService.execute(user_id)
 

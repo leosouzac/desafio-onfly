@@ -1,3 +1,4 @@
+import 'express-async-errors'
 import 'reflect-metadata'
 import swaggerUi from 'swagger-ui-express'
 import '../container'
@@ -7,9 +8,9 @@ import express, {
   RequestHandler,
   Response,
 } from 'express'
-import swaggerFile from '../../../swagger.json'
 import routes from './routes'
-import AppError from '@shared/errors/AppError'
+import swaggerFile from '../../../swagger.json'
+import AppError from '../../errors/AppError'
 
 const app = express()
 

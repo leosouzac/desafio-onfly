@@ -20,7 +20,7 @@ export class Expense {
   @Column({ type: 'varchar' })
   user_id: string
 
-  @Column({type: 'date'})
+  @Column({ type: 'date' })
   date: Date
 
   @CreateDateColumn({ type: 'date' })

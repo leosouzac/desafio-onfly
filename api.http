@@ -12,19 +12,19 @@ POST http://localhost:3333/sessions
 Content-Type: application/json
 
 {
-    "email": "teste2@teste.com",
+    "email": "teste@teste.com",
     "password": "teste"
 }
 ###
 
 POST http://localhost:3333/expenses
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTAxMTgzNzMsImV4cCI6MTcxMDIwNDc3Mywic3ViIjoiNzBhN2RmYmEtZGNlOS00ZGM3LWJmZDctMTI5YTUyNTAzNjRmIn0.KTbifTWnciZV-hQQxDdpS-y2q8pNKro5X-wkhpScgfc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTAxODg3NDIsImV4cCI6MTcxMDI3NTE0Miwic3ViIjoiNzBhN2RmYmEtZGNlOS00ZGM3LWJmZDctMTI5YTUyNTAzNjRmIn0.5S0xEdytnSpYwDcIitB1uI-v50dwvSPrmvjWcN-yS3Q
 
 {
-    "amount": 1000,
+    "amount": -1000,
     "description": "teste",
-    "date": "2024-01-25"
+    "date": "2024-07-29"
 }
 
 ###
@@ -35,12 +35,18 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTAxMTg0N
 ###
 PUT http://localhost:3333/expenses
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTAxMTg2MDMsImV4cCI6MTcxMDIwNTAwMywic3ViIjoiNzBhN2RmYmEtZGNlOS00ZGM3LWJmZDctMTI5YTUyNTAzNjRmIn0.MLKiiHwOzW_hdPO2L43EJeXPBN-nID3CGF6rE7JEIfU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTAxODkxNzAsImV4cCI6MTcxMDI3NTU3MCwic3ViIjoiMjg4ZTQ4MTgtZmMyYy00ZTUzLWJiZjItMDM3ZjE4NmM3NGZmIn0.1hz079cCTQ7GZrzCiq10ISJBLaaCiEpssVJayKjILGY
 
 {
     "amount": 2000,
     "id": "d0e30e35-61e9-47c5-b7be-0496216e318e"
 }
+
+
+###
+GET http://localhost:3333/expenses
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MTAxODg3NDIsImV4cCI6MTcxMDI3NTE0Miwic3ViIjoiNzBhN2RmYmEtZGNlOS00ZGM3LWJmZDctMTI5YTUyNTAzNjRmIn0.5S0xEdytnSpYwDcIitB1uI-v50dwvSPrmvjWcN-yS3Q
 
 
 

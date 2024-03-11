@@ -1,12 +1,10 @@
-import authConfig from '@config/auth';
-import AppError from '@shared/errors/AppError';
-import { Request, Response, NextFunction } from 'express';
-import { verify } from 'jsonwebtoken';
-
-
+import authConfig from '../../../config/auth'
+import AppError from '../../errors/AppError'
+import { Request, Response, NextFunction } from 'express'
+import { verify } from 'jsonwebtoken'
 
 interface IPayload {
-  sub: string;
+  sub: string
 }
 
 export default function ensureAuthenticated(
@@ -14,25 +12,25 @@ export default function ensureAuthenticated(
   response: Response,
   next: NextFunction,
 ): void {
-  const { secret } = authConfig.jwt;
+  const { secret } = authConfig.jwt
 
-  const authHeader = request.headers.authorization;
+  const authHeader = request.headers.authorization
 
   if (!authHeader) {
-    throw new AppError('JWT token is missing', 401);
+    throw new AppError('JWT token is missing', 401)
   }
 
-  const [, token] = authHeader.split(' ');
+  const [, token] = authHeader.split(' ')
 
   try {
-    const { sub: user_id } = verify(token, secret) as IPayload;
+    const { sub: user_id } = verify(token, secret) as IPayload
 
     request.user = {
       id: user_id,
-    };
+    }
 
-    return next();
+    return next()
   } catch {
-    throw new AppError('Invalid JWT token', 401, 'authenticated');
+    throw new AppError('Invalid JWT token', 401, 'authenticated')
   }
 }

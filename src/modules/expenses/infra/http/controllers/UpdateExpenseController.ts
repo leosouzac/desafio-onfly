@@ -14,8 +14,8 @@ export class UpdateExpenseController {
       amount,
       description,
       id,
-      user_id, 
-      date
+      user_id,
+      date,
     })
 
     return response.status(201).json(updatedCar)
