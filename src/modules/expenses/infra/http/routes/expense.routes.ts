@@ -7,22 +7,22 @@ import ensureAuthenticated from '../../../../../shared/infra/middlewares/ensureA
 
 const expenseRouter = Router()
 
-const createCarController = new CreateExpenseController()
+const createExpenseController = new CreateExpenseController()
 
-const updateCarController = new UpdateExpenseController()
+const updateExpenseController = new UpdateExpenseController()
 
-const deleteCarController = new DeleteExpenseController()
+const deleteExpenseController = new DeleteExpenseController()
 
 const listCasController = new ListExpensesByUserController()
 
 expenseRouter.use(ensureAuthenticated)
 
-expenseRouter.post('/', createCarController.handle)
+expenseRouter.post('/', createExpenseController.handle)
 
 expenseRouter.get('/', listCasController.handle)
 
-expenseRouter.put('/', updateCarController.handle)
+expenseRouter.put('/', updateExpenseController.handle)
 
-expenseRouter.delete('/:expense_id', deleteCarController.handle)
+expenseRouter.delete('/:expense_id', deleteExpenseController.handle)
 
 export { expenseRouter }

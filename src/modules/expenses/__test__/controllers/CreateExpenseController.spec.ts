@@ -33,7 +33,7 @@ describe('Create new expense controller test', () => {
     createExpenseServiceMock.mockClear()
   })
 
-  it('should be able to create a car', async () => {
+  it('should be able to create a expense', async () => {
     const newExpense = new Expense()
     newExpense.id = v4()
     newExpense.description = 'Viagem'

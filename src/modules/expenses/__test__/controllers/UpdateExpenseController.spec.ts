@@ -12,7 +12,7 @@ const updateExpenseServiceMock = UpdateExpenseService as jest.MockedClass<
 let token: string
 let user: User
 
-describe('Update car controller test', () => {
+describe('Update expense controller test', () => {
   beforeAll(async () => {
     const responseUser = await request(app).post('/user').send({
       name: 'test',

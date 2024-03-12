@@ -8,9 +8,9 @@ export class UpdateExpenseController {
 
     const user_id = request.user.id
 
-    const updateCarService = container.resolve(UpdateExpenseService)
+    const updateExpenseService = container.resolve(UpdateExpenseService)
 
-    const updatedCar = await updateCarService.execute({
+    const updatedExpense = await updateExpenseService.execute({
       amount,
       description,
       id,
@@ -18,6 +18,6 @@ export class UpdateExpenseController {
       date,
     })
 
-    return response.status(201).json(updatedCar)
+    return response.status(201).json(updatedExpense)
   }
 }

@@ -10,7 +10,7 @@ const expenseRepositoryMock = ExpenseRepository as jest.MockedClass<
   typeof ExpenseRepository
 >
 
-describe('Update a car service test', () => {
+describe('Update a expense service test', () => {
   let updateExpenseService: UpdateExpenseService
 
   beforeEach(async () => {

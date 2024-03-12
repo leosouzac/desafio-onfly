@@ -43,13 +43,13 @@ export class UpdateExpenseService {
       throw new AppError('User has no permission to update this expense', 403)
     }
 
-    const updatedCar = await this.expenseRepository.update({
+    const updatedExpense = await this.expenseRepository.update({
       ...foundExpense,
       description: description || foundExpense.description,
       amount: amount || foundExpense.amount,
       date: date || foundExpense.date,
     })
 
-    return updatedCar
+    return updatedExpense
   }
 }
